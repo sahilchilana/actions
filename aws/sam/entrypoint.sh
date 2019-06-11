@@ -18,23 +18,3 @@ echo "$output" > "${HOME}/${GITHUB_ACTION}.${AWS_DEFAULT_OUTPUT}"
 # Write output to STDOUT
 echo "$output"
 
-# Slack message
-duration=$(($(date '+%s') - $start))
-icon="https://newmathdata.com/wp-content/uploads/2018/03/aws_sam_local.png"
-title=$GITHUB_REPOSITORY
-text="$1 completed"
-footer="Completed in ${duration}s"
-
-cat <<EOF > slack.json
-{
-  "username": "SAM",
-  "icon_url": "$icon",
-  "attachments": [
-    {
-      "title": "$title",
-      "text": "$text",
-      "footer": "$footer"
-    }
-  ]
-}
-EOF
